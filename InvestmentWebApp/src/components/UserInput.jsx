@@ -1,24 +1,13 @@
-import { useState } from "react";
-
-export default function UserInput() {
-  const [initialInvestment, setInitialInvestment] = useState(0);
-  const [expectedReturn, SetExpectedReturn] = useState(0);
-  const [annualInvestment, setAnnualInvestment] = useState(0);
-  const [duration, setDuration] = useState(0);
-
-  const handleInitialInvestmentChange = (event) => {
-    setInitialInvestment(event.target.value);
-  };
-  const handleReturnChange = (event) => {
-    SetExpectedReturn(event.target.value);
-  };
-  const handleAnnualInvestmentChange = (event) => {
-    setAnnualInvestment(event.target.value);
-  };
-  const handleDurationChange = (event) => {
-    setDuration(event.target.value);
-  };
-
+export default function UserInput({
+  setInitialInvestment,
+  setExpectedReturn,
+  setAnnualInvestment,
+  setDuration,
+  initialInvestment,
+  expectedReturn,
+  annualInvestment,
+  duration,
+}) {
   return (
     <>
       <div className="input-group">
@@ -27,7 +16,7 @@ export default function UserInput() {
           <input
             type="number"
             required
-            onChange={handleInitialInvestmentChange}
+            onChange={(e) => setInitialInvestment(e)}
             value={initialInvestment}
           />
         </div>
@@ -36,7 +25,7 @@ export default function UserInput() {
           <input
             type="number"
             required
-            onChange={handleReturnChange}
+            onChange={(e) => setExpectedReturn(e)}
             value={expectedReturn}
           />
         </div>
@@ -47,7 +36,7 @@ export default function UserInput() {
           <input
             type="number"
             required
-            onChange={handleAnnualInvestmentChange}
+            onChange={(e) => setAnnualInvestment(e)}
             value={annualInvestment}
           />
         </div>
@@ -56,7 +45,7 @@ export default function UserInput() {
           <input
             type="number"
             required
-            onChange={handleDurationChange}
+            onChange={(e) => setDuration(e)}
             value={duration}
           />
         </div>
