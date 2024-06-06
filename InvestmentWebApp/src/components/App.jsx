@@ -22,6 +22,8 @@ function App() {
   const handleDurationChange = (event) => {
     setDuration(event.target.value);
   };
+
+  const inputIsValid = duration >= 1;
   return (
     <>
       <div id="header">
@@ -41,12 +43,16 @@ function App() {
         />
       </div>
       <div id="result">
-        <Result
-          initialInvestment={+initialInvestment}
-          expectedReturn={+expectedReturn}
-          annualInvestment={+annualInvestment}
-          duration={+duration}
-        />
+        {inputIsValid ? (
+          <Result
+            initialInvestment={+initialInvestment}
+            expectedReturn={+expectedReturn}
+            annualInvestment={+annualInvestment}
+            duration={+duration}
+          />
+        ) : (
+          <p className="center">duration can't be lower than 1</p>
+        )}
       </div>
     </>
   );
