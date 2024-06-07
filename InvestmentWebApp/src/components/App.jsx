@@ -23,7 +23,24 @@ function App() {
     setDuration(event.target.value);
   };
 
-  const inputIsValid = duration >= 1;
+  let inputIsValid = "you cant choose negative input's data";
+
+  if (
+    initialInvestment >= 0 &&
+    expectedReturn >= 0 &&
+    annualInvestment >= 0 &&
+    duration > 0
+  ) {
+    inputIsValid = (
+      <Result
+        initialInvestment={+initialInvestment}
+        expectedReturn={+expectedReturn}
+        annualInvestment={+annualInvestment}
+        duration={+duration}
+      />
+    );
+  }
+
   return (
     <>
       <div id="header">
@@ -43,16 +60,7 @@ function App() {
         />
       </div>
       <div id="result">
-        {inputIsValid ? (
-          <Result
-            initialInvestment={+initialInvestment}
-            expectedReturn={+expectedReturn}
-            annualInvestment={+annualInvestment}
-            duration={+duration}
-          />
-        ) : (
-          <p className="center">duration can't be lower than 1</p>
-        )}
+        <p className="center">{inputIsValid}</p>
       </div>
     </>
   );
